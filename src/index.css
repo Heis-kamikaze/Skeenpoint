@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.font-roboto {
+  font-family: "Roboto", system-ui;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.font-roboto-con {
+  font-family: "Roboto Condensed", system-ui;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
