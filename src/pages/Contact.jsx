@@ -4,8 +4,8 @@ import { MdOutlinePhone } from "react-icons/md"
 const Contact = () => {
   return (
    <>
-    <div className="mx-5">
-      <div className="bg-b1-200 flex text-center justify-center py-5 mt-2 rounded-lg">
+    <div className="mx-3 pt-12 sm:pt-16 md:pt-24">
+      <div className="bg-b1-200 flex text-center justify-center py-5 mt-2 rounded-xl">
         <p className="text-xl font-extrabold">
           CONTACT US
         </p>
