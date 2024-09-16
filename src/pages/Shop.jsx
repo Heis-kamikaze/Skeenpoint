@@ -8,7 +8,7 @@ const Shop = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [fetchProducts, product]);
+  }, [fetchProducts]);
 
   return (
     <div className='pt-12 sm:pt-16 md:pt-24'>

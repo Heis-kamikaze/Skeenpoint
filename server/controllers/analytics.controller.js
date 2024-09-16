@@ -1,5 +1,6 @@
 import Product from "../models/products.model.js";
 import User from "../models/users.model.js";
+import Order from './../models/order.model.js';
 
 export const getAnalyticsData = async() => {
     const totalUsers = await User.countDocuments();
@@ -50,7 +51,7 @@ export const getDailySalesData = async (startDate, endDate) => {
         }
     ])
 
-    const dateArray = getDateInRange(startDate, endDate)
+    const dateArray = await getDateInRange(startDate, endDate)
 
     return dateArray.map(date => {
         const foundData = dailySalesData.find(item => item._id === date)
@@ -70,7 +71,7 @@ const getDateInRange = async (startDate, endDate) => {
     const dates = [];
     let currentDate = new Date(startDate);
 
-    while(currentDate <= endDate) {
+    while(currentDate <= new Date(endDate)) {
         dates.push(new Date(currentDate));
         currentDate.setDate(currentDate.getDate() + 1);
     }

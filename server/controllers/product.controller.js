@@ -97,7 +97,7 @@ export const getRecommendedProducts = async (req, res) => {
         const products = await Product.aggregate([
             {
                 $sample: {
-                    size: 5
+                    size: 4
                 }
             },
             {
@@ -150,7 +150,7 @@ export const toggleFeaturedProduct = async (req, res) => {
         res.status(200).json({ isFeatured: updatedProduct.isFeatured, message: updatedProduct.isFeatured ? "Product is now featured" : "Product is no longer featured" });
     } catch (error) {
         console.log("Error in toggleFeaturedProduct controller", error.message);
-        res.status(500).json({ message: "Server error", error: error.message });
+        res.status(500).json({ message: "Server error, Your internet might be slow", error: error.message });
     }
 }
 

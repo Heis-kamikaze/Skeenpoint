@@ -1,0 +1,133 @@
+Rave {
+  Bank: Bank {
+    branches: [Function (anonymous)],
+    country: [Function (anonymous)]
+  },
+  Beneficiary: Beneficiaries {
+    create: [Function (anonymous)],
+    delete: [Function (anonymous)],
+    fetch_all: [Function (anonymous)],        
+    fetch: [Function (anonymous)]
+  },
+  Bills: Bills {
+    create_bill: [Function (anonymous)],      
+    amt_to_be_paid: [Function (anonymous)],   
+    create_bulk: [Function (anonymous)],      
+    create_ord_billing: [Function (anonymous)],
+    fetch_bills: [Function (anonymous)],      
+    fetch_bills_Cat: [Function (anonymous)],  
+    fetch_bills_agencies: [Function (anonymous)],
+    fetch_status: [Function (anonymous)],     
+    products_under_agency: [Function (anonymous)],
+    update_bills: [Function (anonymous)],     
+    validate: [Function (anonymous)]
+  },
+  Charge: Charge {
+    card: [Function (anonymous)],
+    ng: [Function (anonymous)],
+    ach: [Function (anonymous)],
+    uk: [Function (anonymous)],
+    ussd: [Function (anonymous)],
+    validate: [Function (anonymous)],
+    voucher: [Function (anonymous)],
+    bank_transfer: [Function (anonymous)],    
+    applepay: [Function (anonymous)],
+    googlepay: [Function (anonymous)],        
+    enaira: [Function (anonymous)],
+    fawrypay: [Function (anonymous)]
+  },
+  Ebills: Ebills {
+    order: [Function (anonymous)],
+    update: [Function (anonymous)]
+  },
+  Misc: Misc {
+    bal_currency: [Function (anonymous)],     
+    bal: [Function (anonymous)],
+    bvn: [Function (anonymous)],
+    verifybvn: [Function (anonymous)],        
+    verify_Account: [Function (anonymous)]    
+  },
+  MobileMoney: Mobile_money {
+    ghana: [Function (anonymous)],
+    mpesa: [Function (anonymous)],
+    rwanda: [Function (anonymous)],
+    uganda: [Function (anonymous)],
+    franco_phone: [Function (anonymous)],     
+    zambia: [Function (anonymous)],
+    tanzania: [Function (anonymous)]
+  },
+  security: {
+    getEncryptionKey: [Function: getKey],     
+    encrypt: [Function: encrypt],
+    getIntegrityHash: [Function: getIntegrityHash]
+  },
+  Otp: Otp {
+    create: [Function (anonymous)],
+    validate: [Function (anonymous)]
+  },
+  PaymentPlan: Payment_plan {
+    create: [Function (anonymous)],
+    cancel: [Function (anonymous)],
+    get_all: [Function (anonymous)],
+    get_plan: [Function (anonymous)],
+    update: [Function (anonymous)]
+  },
+  Settlement: Settlements {
+    fetch_all: [Function (anonymous)],        
+    fetch: [Function (anonymous)]
+  },
+  Subscription: Subscriptions {
+    activate: [Function (anonymous)],
+    cancel: [Function (anonymous)],
+    fetch_all: [Function (anonymous)],        
+    get: [Function (anonymous)]
+  },
+  Subaccount: Subaccount {
+    create: [Function (anonymous)],
+    delete: [Function (anonymous)],
+    fetch_all: [Function (anonymous)],        
+    fetch: [Function (anonymous)],
+    update: [Function (anonymous)]
+  },
+  Tokenized: Tokenized {
+    charge: [Function (anonymous)],
+    fetch_bulk: [Function (anonymous)],       
+    bulk: [Function (anonymous)],
+    fetch_charge_transactions: [Function (anonymous)],
+    update_token: [Function (anonymous)]      
+  },
+  Transaction: Transactions {
+    event: [Function (anonymous)],
+    fee: [Function (anonymous)],
+    refund: [Function (anonymous)],
+    resend_hooks: [Function (anonymous)],     
+    fetch: [Function (anonymous)],
+    verify: [Function (anonymous)]
+  },
+  Transfer: Transfers {
+    bulk: [Function (anonymous)],
+    fee: [Function (anonymous)],
+    initiate: [Function (anonymous)],
+    fetch: [Function (anonymous)],
+    get_a_transfer: [Function (anonymous)],   
+    wallet_to_wallet: [Function (anonymous)]  
+  },
+  VirtualAcct: Virtual_account {
+    create_bulk: [Function (anonymous)],      
+    create: [Function (anonymous)],
+    fetch: [Function (anonymous)],
+    fetch_bulk: [Function (anonymous)]        
+  },
+  VirtualCard: Virtual_card {
+    create: [Function (anonymous)],
+    fund: [Function (anonymous)],
+    fetch_all: [Function (anonymous)],        
+    fetch: [Function (anonymous)],
+    block: [Function (anonymous)],
+    unblock: [Function (anonymous)],
+    terminate: [Function (anonymous)],        
+    transactions: [Function (anonymous)],     
+    withdraw_funds: [Function (anonymous)]    
+  },
+  getIntegrityHash: [Function (anonymous)]    
+}

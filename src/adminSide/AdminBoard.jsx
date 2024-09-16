@@ -40,7 +40,7 @@ const AdminBoard = () => {
               {tabs.map((tab) => (
                 <motion.div
                   key={tab.id}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer ${activeTab === tab.id ? 'bg-rust-100 text-white' : 'bg-gray-200 text-gray-800'}`}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer shadow-xl ${activeTab === tab.id ? 'bg-rust-100 text-white shadow-lg shadow-slate-950' : 'bg-gray-200 text-gray-800'}`}
                   onClick={() => setActiveTab(tab.id)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

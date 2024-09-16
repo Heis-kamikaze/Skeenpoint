@@ -15,14 +15,14 @@ dotenv.config()
 
 const app = express();
 // eslint-disable-next-line no-undef
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json({limit: "10mb"}));
 app.use(cookieParser());
 
 // CORS Middleware
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:5173', 'http://skeenpoint.com.ng'],
+    origin: ['http://localhost:3000', 'http://localhost:5173', 'http://skeenpoint.com.ng', 'https://skeenpoint.vercel.app'],
     methods: 'POST, PUT, DELETE, GET, OPTIONS',
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
@@ -31,12 +31,12 @@ app.use(cors({
 app.use("/api/auth", authRoutes)
 app.use("/api/products", productRoutes)
 app.use("/api/cart", cartRoutes)
-app.use("/api/payments", paymentRoutes)
+app.use("/api/payment", paymentRoutes)
 app.use("/api/analytics", analyticsRoutes)
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`)
+app.listen(port, () => {
+    console.log(`Server is running on port http://localhost:${port}`)
 
     connectDB()
 })

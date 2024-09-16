@@ -1,14 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="https://res.cloudinary.com/dk60nznrm/image/upload/v1726052557/logo_w3xjkz.png" />
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/dk60nznrm/image/upload/v1726052557/logo_w3xjkz.png"
+      id="favicon"
+    />
+    <script>
+      const favicon = document.getElementById("favicon");
+
+      favicon.addEventListener("error", () => {
+        favicon.href = "./images/logo.png"; // assuming your local image is in the public folder
+      });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-      </style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
     <title>Skeenpoint</title>
-
   </head>
   <body class="font-roboto">
     <div id="root"></div>

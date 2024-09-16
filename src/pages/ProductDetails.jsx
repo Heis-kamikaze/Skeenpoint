@@ -31,15 +31,17 @@ const ProductDetails = () => {
 
   if (!product) return <div>Product not found</div>;
 
+  
+
   return (
     <div className="pt-12 sm:pt-16 md:pt-24 mx-3 mb-20">
       <div className="sm:flex flex flex-col justify-center items-center">
         <div className="flex items-center">
-          <div className="rounded-lg border border-b1-100 shadow-md mb-3">
+          <div className="rounded-3xl border border-b1-100 shadow-slate-400 shadow-xl mb-3">
             <img
               src={product.image}
               alt={product.name}
-              className="w-fit h-fit"
+              className="w-48"
             />
           </div>
         </div>
@@ -50,7 +52,7 @@ const ProductDetails = () => {
               {product.name}
             </p>
             <button
-              className="bg-rust-100 text-white text-xs md:text-xl text-center font-light px-4 py-2 rounded-md md:rounded-lg mt-2 md:w-fit sm:w-fit"
+              className="bg-rust-100 text-white text-xs md:text-xl text-center font-light px-4 py-2 rounded-md md:rounded-lg mt-2 md:w-fit sm:w-fit shadow-slate-400 shadow-xl"
               onClick={handleAddToCart}
             >
               Add to Cart <ShoppingCart className="inline-block" />
@@ -58,7 +60,8 @@ const ProductDetails = () => {
           </div>
 
           <p className="text-md font-extrabold text-rust-100">
-            &#x20a6;{product.price}
+          &#x20a6;{(product.price ? product.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '0.00')}
+
           </p>
           <p className="font-medium">{product.description}</p>
           <hr />

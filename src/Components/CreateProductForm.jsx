@@ -55,7 +55,7 @@ const CreateProductForm = () => {
 
   return (
     <motion.div
-    className='bg-white shadow-md rounded-lg p-4 flex justify-between items-center mb-4'
+    className='bg-white shadow-slate-400 shadow-xl rounded-lg flex justify-between items-center mb-4'
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -63,7 +63,7 @@ const CreateProductForm = () => {
       <div className="w-full max-w-lg mx-auto">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pb-8 mb-4 text-start"
+        className="bg-white shadow-slate-400 shadow-md rounded px-8 pb-8 text-start"
       >
         <div className="">
           <label htmlFor="name" className="text-sm font-medium text-rust-200">
@@ -78,7 +78,7 @@ const CreateProductForm = () => {
               setProductData({ ...productData, name: e.target.value })
             }
             required
-            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-sm py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
+            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-slate-400 shadow-xl py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
           />
         </div>
 
@@ -98,7 +98,7 @@ const CreateProductForm = () => {
               setProductData({ ...productData, description: e.target.value })
             }
             required
-            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-sm py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
+            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-slate-400 shadow-xl py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
           />
         </div>
 
@@ -109,7 +109,7 @@ const CreateProductForm = () => {
           >
             Ingredients
           </label>
-          <input
+          <textarea
             type="text"
             id="ingredients"
             name="ingredients"
@@ -118,7 +118,7 @@ const CreateProductForm = () => {
               setProductData({ ...productData, ingredients: e.target.value })
             }
             required
-            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-sm py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
+            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-slate-400 shadow-xl py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
           />
         </div>
 
@@ -136,7 +136,7 @@ const CreateProductForm = () => {
             onChange={(e) =>
               setProductData({ ...productData, category: e.target.value })
             }
-            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-sm py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
+            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-slate-400 shadow-xl py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
             required
           >
             <option value="">Select a Category</option>
@@ -152,7 +152,7 @@ const CreateProductForm = () => {
           <label htmlFor="usage" className="text-sm font-medium text-rust-200">
             Usage
           </label>
-          <input
+          <textarea
             type="text"
             id="usage"
             name="usage"
@@ -161,7 +161,7 @@ const CreateProductForm = () => {
               setProductData({ ...productData, usage: e.target.value })
             }
             required
-            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-sm py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
+            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-slate-400 shadow-xl py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
           />
         </div>
 
@@ -178,10 +178,10 @@ const CreateProductForm = () => {
               setProductData({ ...productData, price: e.target.value })
             }
             required
-            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-sm py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
+            className="text-sm font-extralight mt-1 block w-full bg-b1-200 border border-b1-100 rounded-md shadow-slate-400 shadow-xl py-0.5 px-1 text-focus:outline-none focus:ring-b1-100 focus:border-b1-100"
           />
         </div>
-        <div className="mt-3 flex items-center justify-between align-middle">
+        <div className="mt-5 mb-7 flex items-center justify-between align-middle">
           <input
             type="file"
             id="image"
@@ -192,7 +192,7 @@ const CreateProductForm = () => {
           />
           <label
             htmlFor="image"
-            className="cursor-pointer bg-rust-100 py-1 px-2 text-sm font-extralight border border-rust-100 rounded-md"
+            className="cursor-pointer bg-rust-100 py-1 px-2 text-sm font-extralight border border-rust-100 shadow-slate-400 shadow-xl rounded-md"
           >
             <Upload className="w-fit h-fit inline-block" />
             Upload Image
@@ -208,7 +208,7 @@ const CreateProductForm = () => {
 
         <button
           type="submit"
-          className="w-full mt-3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-rust-100 hover:bg-rust-200 transition duration-150 ease-in-out disabled:opacity-50"
+          className="w-full mt-3 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-slate-400 shadow-xl text-sm font-medium text-white bg-rust-100 hover:bg-rust-200 transition duration-150 ease-in-out disabled:opacity-50"
           disabled={loading}
           onClick={handleSubmit}
         >

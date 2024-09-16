@@ -34,7 +34,7 @@ export const useProductStore = create((set, get) => ({
             set({product: res.data.products, loading: false});
         } catch (error) {
             set({loading: false});
-            toast.error(error?.res?.data?.error || error?.res?.data?.message || "An unexpected error occurred");
+            toast.error(error?.response?.data?.error || error?.response?.data?.message || "An unexpected error occurred");
         }
     },
 
@@ -50,7 +50,7 @@ export const useProductStore = create((set, get) => ({
             toast.success(res.data.message);
         } catch (error) {
             set({loading: false});
-            toast.error(error?.res?.data?.error || error?.res?.data?.message || "An unexpected error occurred");
+            toast.error(error?.response?.data?.error || error?.response?.data?.message || "An unexpected error occurred");
         }
     },
 
@@ -68,7 +68,7 @@ export const useProductStore = create((set, get) => ({
             toast.success(res.data.message);
         } catch (error) {
             set({loading: false});
-            toast.error(error?.res?.data?.error || error?.res?.data?.message || "An unexpected error occurred");
+            toast.error(error?.response?.data?.error || error?.response?.data?.message || "An unexpected error occurred");
         }
     },
 

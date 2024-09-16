@@ -5,6 +5,7 @@ import {  Mail, Lock, ArrowRight, Loader, LogIn } from "lucide-react";
 import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
 import { useUserStore } from "../stores/useUserStore";
+import MiniLoader from './../Components/MiniLoader';
 
 const LoginPg = () => {
   const [formData, setFormData] = useState({
@@ -98,7 +99,7 @@ const LoginPg = () => {
         >
           {loading ? (
             <>
-            <Loader className="h-5 w-5 text-white" />
+            <MiniLoader className="h-7 w-7 text-white" />
             </>
           ) : (
             <span className="flex items-center">

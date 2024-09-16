@@ -23,21 +23,23 @@ import AdminBoard from "./adminSide/AdminBoard";
 import NotFound from "./pages/NotFound";
 import ProductDetails from "./pages/ProductDetails";
 import { useCartStore } from "./stores/useCartStore";
+import ScrollToTop from "./Components/ScrollToTop";
 
 const App = () => {
   const {user, checkAuth, checkingAuth} = useUserStore();
   const {getCartItems} = useCartStore();
-
+  
   useEffect(() => {
     checkAuth();
     
   }, [checkAuth])
-
+  
   if (checkingAuth) return <LoadingSpinner />
 
   return (
     <>
-      <Header className="f-header" />
+      <Header className="f-header" plug/>
+      <ScrollToTop />
       <Routes>
         <Route path="/login" element={!user ? <LoginPg /> : <Navigate to='/' />} />
 

@@ -9,7 +9,7 @@ export const useCartStore = create((set, get) => ({
     total:0,
     subTotal:0,
     
-
+    
     getCartItems: async ()=> {
         try {
            const res = await axInstance.get('/cart') 
@@ -17,7 +17,7 @@ export const useCartStore = create((set, get) => ({
            get().calculateTotal();
         } catch (error) {
             set({cart: []})
-            toast.error(error?.response?.data?.message || error?.response?.data?.error || "An error occurred")
+            toast.error(error?.response?.data?.message || error?.response?.data?.error || "An unexpected error occurred")
         }
     },
 
@@ -39,7 +39,7 @@ export const useCartStore = create((set, get) => ({
             toast.success("Added to cart successfully");
         } catch (error) {
             console.log(error)
-            toast.error(error?.response?.data?.message || "An error occurred")
+            toast.error(error?.response?.data?.message || "An unexpected error occurred")
         }
     },
 
@@ -50,7 +50,7 @@ export const useCartStore = create((set, get) => ({
     removeFromCart: async (cartId) => {
 		await axInstance.delete(`/cart/${cartId}`, { data: { cartId } });
 		set((prevState) => ({ cart: prevState.cart.filter((item) => item.cartId !== cartId) }));
-		get().calculateTotals();
+		get().calculateTotal();
         get().getCartItems();
 	},
     
@@ -70,8 +70,8 @@ export const useCartStore = create((set, get) => ({
 
     calculateTotal : async () => {
         const {cart} = get();
-        const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        const subTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-        set({total})
+        set({subTotal})
     }
 }));
