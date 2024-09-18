@@ -1,8 +1,6 @@
 import {
-  createBrowserRouter,
   Navigate,
   Route,
-  RouterProvider,
   Routes,
 } from "react-router-dom";
 import Homepage from "./pages/Homepage";
@@ -62,6 +60,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
 
         <Route path="*" element={<NotFound />} />
+
       </Routes>
       <Footer />
       <Toaster />

@@ -7,6 +7,7 @@ import axInstance from './../lib/axios.js';
 export const useCartStore = create((set, get) => ({
     cart: [],
     total:0,
+    shippingFee: 5000,
     subTotal:0,
     
     
@@ -70,8 +71,10 @@ export const useCartStore = create((set, get) => ({
 
     calculateTotal : async () => {
         const {cart} = get();
+        const {shippingFee} = get()
         const subTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
         set({subTotal})
+        set({total: subTotal + shippingFee})
     }
 }));

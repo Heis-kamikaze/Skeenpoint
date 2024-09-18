@@ -1,99 +1,37 @@
-import Order from "../models/order.model.js";
-import { flutterwave } from "../lib/flutterwave.js";
+import Order from "../models/order.model.js"; // Import your Order model
 
-export const createCheckoutSession = async (req, res) => {
+// Create a new order after successful payment
+export const createOrder = async (req, res) => {
     try {
-        const { products } = req.body;
+        const { products, totalAmount, flutterwaveTransactionId } = req.body;
 
-        if (!Array.isArray(products) || products.length === 0) {
-            return res.status(400).json({ error: "Invalid or empty products array" });
+        // Ensure the required data is present
+        if (!Array.isArray(products) || products.length === 0 || !totalAmount || !flutterwaveTransactionId) {
+            return res.status(400).json({ error: "Missing required order details" });
         }
 
-        let totalAmount = 0;
-
-        const lineItems = products.map((product) => {
-            const amount = product.price;
-            totalAmount += amount * product.quantity;
-
-            return {
-                name: product.name,
-                amount: amount,
-                quantity: product.quantity || 1,
-            };
-        });
-
-        // Flutterwave payment request
-        const payload = {
-            tx_ref: "flw-tx-" + Date.now(),
-            amount: totalAmount,
-            currency: "NGN",
-            payment_options: 'card,mobilemoney,ussd',
-            redirect_url: `${process.env.CLIENT_URL}/purchase-success`,
-            customer: {
-                email: req.user.email,
-                phonenumber: req.user.phone,
-                name: req.user.name,
-            },
-            customizations: {
-                title: "Skeenpoint",
-                description: "Payment for products",
-                logo: "https://skeenpoint.com.ng/logo.png",
-            },
-            configurations: {
-              session_duration: 20,// Session timeout in minutes (maxValue: 1440)    
-              max_retry_attempt: 9// Max retry (int)
-            },
-        };
-
-        const response = await flutterwave.Charge.card(payload);
-        
-        res.status(200).json({
-            checkoutUrl: response.data.link, // This is the payment link where the user will be redirected
+        // Create the order (user data should be passed from the frontend or JWT token)
+        const newOrder = new Order({
+            user: req.user._id,  // Assuming you have a user attached to the request via middleware
+            products: products.map((product) => ({
+                product: product._id,
+                quantity: product.quantity,
+                price: product.price,
+            })),
             totalAmount,
+            flutterwaveTransactionId,
         });
 
+        await newOrder.save();
+
+        // Send a success response back to the frontend
+        res.status(200).json({
+            success: true,
+            message: "Order created successfully.",
+            orderId: newOrder._id,
+        });
     } catch (error) {
-        console.error("Error processing checkout:", error);
-        res.status(500).json({ message: "Error processing checkout", error: error.message });
+        console.error("Error creating order:", error);
+        res.status(500).json({ message: "Error creating order", error: error.message });
     }
 };
-
-export const checkoutSuccess = async (req, res) => {
-    try {
-        const { transaction_id } = req.body; // Get the transaction ID from the Flutterwave redirect
-
-        // Verify the transaction
-        const response = await flutterwave.Transaction.verify({ id: transaction_id });
-
-        if (response.data.status === "successful") {
-            const session = response.data;
-
-            // Create a new order
-            const products = JSON.parse(session.meta.products);
-            const newOrder = new Order({
-                user: session.meta.userId,
-                products: products.map((product) => ({
-                    product: product.id,
-                    quantity: product.quantity,
-                    price: product.price,
-                })),
-                totalAmount: session.amount,
-                flutterwaveTransactionId: transaction_id,
-            });
-
-            await newOrder.save();
-
-            res.status(200).json({
-                success: true,
-                message: "Payment successful, order created.",
-                orderId: newOrder._id,
-            });
-        } else {
-            res.status(400).json({ message: "Payment not successful" });
-        }
-    } catch (error) {
-        console.error("Error processing successful checkout:", error);
-        res.status(500).json({ message: "Error processing successful checkout", error: error.message });
-    }
-};
-

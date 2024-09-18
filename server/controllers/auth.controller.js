@@ -128,7 +128,8 @@ export const getProfile = async (req, res) => {
         console.log(`Error in GetProfile controller:`, error.message)
         res.status(500).json({ message: "Server error", error: error.message })
     }
-}
+};
+
 //recreate an access token
 export const refreshToken = async (req, res) => {
     try {
@@ -163,3 +164,47 @@ export const refreshToken = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message })
     }
 }
+
+// Controller for updating billing details
+export const updateUserInfo = async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const { name, email, phone, billDetails } = req.body;
+  
+      // Check if all billing details fields are filled
+      const isBillingComplete =
+        billDetails &&
+        billDetails.country &&
+        billDetails.address &&
+        billDetails.city &&
+        billDetails.stateName 
+
+      // Update the user information and billing details
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        {
+          name,
+          email,
+          phone,
+          billDetails: {
+            ...billDetails,
+            isCompleted: isBillingComplete ? true : false, // Set to true only if all fields are filled
+          },
+        },
+        { new: true } // Return the updated document
+      );
+  
+      if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Respond with the updated user data
+      res.status(200).json({
+        message: 'User information updated successfully',
+        user: updatedUser,
+      });
+    } catch (error) {
+      console.error('Error updating user information:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  };

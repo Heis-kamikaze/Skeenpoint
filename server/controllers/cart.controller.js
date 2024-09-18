@@ -23,7 +23,7 @@ export const getCart = async (req, res) => {
             };
         });
 
-        console.log("Cart in contr:", cartItems);
+
         res.json(cartItems);
     } catch (error) {
         console.log("Error in getCart controller", error.message);
@@ -101,7 +101,6 @@ export const removeProductFromCart = async (req, res) => {
 export const updateQuantity = async (req, res) => {
     try {
         const { id: cartId } = req.params;
-        console.log("carti", cartId)
         const { quantity } = req.body;
         console.log(quantity)
         const user = req.user;

@@ -79,7 +79,7 @@ const Header = () => {
                 <Link to="/cart">
                   <MdShoppingBag className="w-6 h-6 md:w-10 md:h-10 mb-0.5" />
                   {cart.length > 0 && (
-                    <span className="absolute top-2 sm:top-2 md:top-5 right-7 sm:right-0.5 bg-red-600 text-white font-extrabold rounded-full px-1 sm:px-1 md:px-2 md:py-1 text-xs group-hover:bg-red-900 transition duration-300 ease-in-out">
+                    <span className="absolute top-2 sm:top-2 md:top-5 right-7 sm:right-0.5 bg-red-600 text-white font-extrabold rounded-full px-1 sm:px-1 md:px-2 md:py-1 text-xs hover:bg-red-900 transition duration-300 ease-in-out">
                       {cart.length}
                     </span>
                   )}

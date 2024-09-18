@@ -1,8 +1,13 @@
+import BillingDetails from "../Components/BillingDetails"
 
 
 const ProfilePage = () => {
   return (
-    <div>ProfilePage</div>
+    <div>
+      <h1>Profile Page</h1>
+
+      <BillingDetails />
+    </div>
   )
 }
 

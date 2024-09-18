@@ -30,7 +30,7 @@ const Cart = () => {
             <p className="m-4 text-2xl text-rust-100 font-extrabold">
               Your Cart
             </p>
-            <button onClick={() => setSumOpen(!sumOpen)}>Open Summary</button>
+            <button onClick={() => setSumOpen(!sumOpen)}>{sumOpen ? 'Close Summary' : 'Open Summary'}</button>
           </div>
           <div className="flex-col items-center justify-center w-screen ml-2">
             <div className="grid grid-cols-4 text-rust-100">

@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true,
     },
     email: {
         type: String,
@@ -40,6 +39,28 @@ const userSchema = new mongoose.Schema({
         enum: ["customer", "admin"],
         default: "customer"
     },
+    billDetails: {
+        country: {
+            type: String,
+            default: ""
+        },
+        address: {
+            type: String,
+            default: ""
+        },
+        city: {
+            type: String,
+            default: ""
+        },
+        stateName: {
+            type: String,
+            default: ""
+        },
+        isCompleted : {
+            type: Boolean,
+            default: false
+        }
+    }
 },
 {
     timestamps: true
