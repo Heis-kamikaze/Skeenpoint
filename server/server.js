@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import path from 'path';
 
 import authRoutes from  "./routes/auth.route.js"
 import productRoutes from "./routes/product.route.js"
@@ -12,6 +13,8 @@ import { connectDB } from "./lib/db.js";
 
 
 dotenv.config()
+
+const __dirname = path.resolve()
 
 const app = express();
 // eslint-disable-next-line no-undef
@@ -34,6 +37,14 @@ app.use("/api/cart", cartRoutes)
 app.use("/api/payment", paymentRoutes)
 app.use("/api/analytics", analyticsRoutes)
 
+if(process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "/dist")))
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "dist", "index.html"))
+    }
+    )
+}
 
 app.listen(port, () => {
     console.log(`Server is running on port http://localhost:${port}`)

@@ -8,6 +8,7 @@
     "dev": "nodemon server/server.js",
     "server": "node server/server.js",
     "build": "vite build",
+    "begin": "npm install && npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
