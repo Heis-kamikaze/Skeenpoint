@@ -101,8 +101,6 @@ const BillingDetails = () => {
           />
         </div>
         <h3>Billing Details</h3>
-        {user.billDetails.isCompleted && <p>
-          Completed</p>}
         <div>
           <label>Country</label>
           <input
