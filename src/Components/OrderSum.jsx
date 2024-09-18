@@ -16,10 +16,12 @@ const OrderSum = () => {
   const flutterwaveKey = import.meta.env.VITE_FLW_PUBLIC_KEY;
   const clientUrl = import.meta.env.VITE_CLIENT_URL;
 
+
+  const now = new Date();
   // Flutterwave configuration
   const config = {
     public_key: flutterwaveKey,
-    tx_ref: "flw-tx-" + Date.now(),
+    tx_ref: `flw-tx-${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}-${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}-${Date.now()}`,
     amount: subTotal, // Total amount from cart
     currency: "NGN",
     payment_options: "card, mobilemoney, ussd",

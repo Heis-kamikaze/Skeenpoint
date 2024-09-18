@@ -10,6 +10,7 @@ export const createOrder = async (req, res) => {
             return res.status(400).json({ error: "Missing required order details" });
         }
 
+        
         // Create the order (user data should be passed from the frontend or JWT token)
         const newOrder = new Order({
             user: req.user._id,  // Assuming you have a user attached to the request via middleware
