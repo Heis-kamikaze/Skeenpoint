@@ -57,7 +57,7 @@ const App = () => {
 
         <Route path="/cart" element={user ? <Cart /> : <Navigate to='/login' />} />
 
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to='/login'/>} />
 
         <Route path="*" element={<NotFound />} />
 
