@@ -32,8 +32,8 @@ export const getDailySalesData = async (startDate, endDate) => {
         {
             $match: {
                 createdAt: {
-                    $gte: startDate,
-                    $lte: endDate
+                    $gte: new Date (startDate),
+                    $lte: new Date (endDate)
                 }
             }
         },
@@ -53,13 +53,16 @@ export const getDailySalesData = async (startDate, endDate) => {
 
     const dateArray = await getDateInRange(startDate, endDate)
 
+
     return dateArray.map(date => {
-        const foundData = dailySalesData.find(item => item._id === date)
+         // Format the date to match the _id format (YYYY-MM-DD)
+      const formattedDate = date.toISOString().split('T')[0]; // '2024-09-18'
+        const foundData = dailySalesData.find(item => item._id === formattedDate)
 
         return {
-            date,
-            sales: foundData?.sales || 0,
-            revenue: foundData?.revenue || 0
+            date: formattedDate,
+            sales: foundData?.totalSales || 0,
+            revenue: foundData?.totalRevenue || 0
         }
     })
    } catch (error) {
@@ -72,7 +75,9 @@ const getDateInRange = async (startDate, endDate) => {
     let currentDate = new Date(startDate);
 
     while(currentDate <= new Date(endDate)) {
-        dates.push(new Date(currentDate));
+         // Format the date to "YYYY-MM-DD" to match the format in the aggregation result
+    const formattedDate = currentDate.toISOString().split('T')[0];
+        dates.push(new Date(formattedDate));
         currentDate.setDate(currentDate.getDate() + 1);
     }
 

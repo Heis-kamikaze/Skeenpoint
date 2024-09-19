@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 const Homepage = () => {
   const { product, fetchProducts } = useProductStore();
   const [recommendations, setRecommendations] = useState([]);
+  const triprod = []
   
   useEffect(() => {
       const fetchRecommendations = async () => {
