@@ -54,7 +54,7 @@ const OrderSum = () => {
             const res = await axInstance.post("/payment/create-order", {
               products: cart,
               totalAmount: total,
-              flutterwaveTransactionId: response.tx_ref, // Use the actual transaction ID
+              flutterwaveTransactionId: response.tx_ref + response.tx_ref + response.flw_ref, // Use the actual transaction ID
             });
 
             // Handle order creation success
