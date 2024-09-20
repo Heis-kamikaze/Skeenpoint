@@ -10,9 +10,11 @@ import axInstance from "./../lib/axios.js";
 
 
 const OrderSum = () => {
-  const { total, subTotal, cart } = useCartStore();
+  const { total, subTotal, cart, shippingFee } = useCartStore();
   const { user } = useUserStore();
   const FsubTotal = subTotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const Ftotal = total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const FshippingFee = shippingFee.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const flutterwaveKey = import.meta.env.VITE_FLW_PUBLIC_KEY;
   const clientUrl = import.meta.env.VITE_CLIENT_URL;
 
@@ -22,7 +24,7 @@ const OrderSum = () => {
   const config = {
     public_key: flutterwaveKey,
     tx_ref: `flw-tx-${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}-${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}-${Date.now()}`,
-    amount: subTotal, // Total amount from cart
+    amount: total, // Total amount from cart
     currency: "NGN",
     payment_options: "card, mobilemoney, ussd",
     customer: {
@@ -31,7 +33,7 @@ const OrderSum = () => {
       name: user.name,
     },
     customizations: {
-      title: "Your Shop Name",
+      title: "Skeenpoint.com",
       description: "Payment for items in cart",
       logo: "https://res.cloudinary.com/dk60nznrm/image/upload/v1726052557/logo_w3xjkz.png", // Optional logo
     },
@@ -41,7 +43,7 @@ const OrderSum = () => {
   const handlePayment = useFlutterwave(config);
 
   const handleCheckout = () => {
-	toast.success("Processing checkout")
+	toast.loading("Processing checkout")
     handlePayment({
       callback: async (response) => {
         // Handle payment success response
@@ -80,7 +82,7 @@ const OrderSum = () => {
 
   return (
     <motion.div
-      className={`space-y-4 rounded-lg p-4 shadow-slate-400 shadow-2xl sm:p-6 fixed z-50 bg-white bottom-10`}
+      className={`space-y-4 rounded-lg p-4 shadow-slate-400 shadow-2xl sm:p-6 fixed z-50 bg-white bottom-10 w-full`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
@@ -99,13 +101,14 @@ const OrderSum = () => {
           <dl className="flex items-center justify-between gap-4 border-gray-600 pt-2">
             <dt className="text-base font-bold">Shipping Fee</dt>
             <dd className="text-base text-right font-bold text-b1-100">
-              Shipping options will be updated during checkout
+              {/* Shipping options will be updated during checkout */}
+              &#x20a6;{FshippingFee}
             </dd>
           </dl>
           <dl className="flex items-center justify-between gap-4 border-gray-600 pt-2">
             <dt className="text-base font-bold">Total</dt>
             <dd className="text-base font-bold text-b1-100">
-              &#x20a6;{FsubTotal}
+              &#x20a6;{Ftotal}
             </dd>
           </dl>
         </div>

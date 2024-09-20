@@ -48,8 +48,8 @@ const Homepage = () => {
   return (
     <div className="">
       <div className="pt-12 sm:pt-16 md:pt-24">
-        <div className="px-4 md:pl-5  mb-5 bg-b1-200 flex">
-          <div className="text-left flex flex-col justify-around md:my-28">
+        <div className="px-4 md:pl-5 mb-5 bg-b1-200 flex">
+          <div className="text-left flex flex-col justify-center md:justify-around md:my-28">
             <p className="text-xs md:text-xl font-extrabold">
               Welcome to Skeenpoint Family
             </p>
