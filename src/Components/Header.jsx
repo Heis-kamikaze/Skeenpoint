@@ -46,7 +46,6 @@ const Header = () => {
             />
           </Link>
         </div>
-        <p>{user && user.name}</p>
         <div className="justify-center text-center align-middle text-sm md:text-xl">
           <ul className={`justify-between hidden sm:block`}>
             <Link to="/">

@@ -75,18 +75,18 @@ const Homepage = () => {
             <img
               src="./images/fem.png"
               alt=""
-              className="md:max-w-sm cus-lg:max-w-2xl h-full"
+              className="w-full h-full"
             />
           </div>
         </div>
       </div>
 
-      <div className="sm:flex justify-around items-center p-4">
-        <div className="mb-3">
+      <div className="sm:flex justify-between items-center p-4">
+        <div className="p-4">
           <img src="./images/3fem.png" alt="" className="rounded-b-lg" />
         </div>
 
-        <div className="text-center sm:text-left sm:w-96">
+        <div className="text-center sm:text-left sm:w-96 px-auto">
           <p className="text-3xl font-extrabold mb-2">
             Glowing skin is a result of proper skincare
           </p>

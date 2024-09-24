@@ -11,7 +11,7 @@ const ProductCard = ({ id, name, price, image, category }) => {
   };
 
     return (
-      <div className="border-gray-400 border p-2 rounded-md text-center items-center justify-center flex flex-col min-w-28 min-h-44 sm:w-64 sm:h-72 shadow-xl bg-gradient-to-b from-white to-b1-200" onClick={handleClick}>
+      <div className="border-gray-400 border p-2 rounded-md text-center items-center justify-center flex flex-col min-w-28 min-h-48 md:w-60 md:h-72 shadow-xl bg-gradient-to-b from-white to-b1-200" onClick={handleClick}>
         <img src={image} alt={name} className="w-16 h-16" />
   
         <div className="font-bold">
